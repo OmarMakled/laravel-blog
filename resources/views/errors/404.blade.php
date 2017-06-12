@@ -1,1 +1,5 @@
-<h1>404</h1>
+@extends('error')
+
+@section('content')
+    <strong>404</strong> Page not found
+@stop

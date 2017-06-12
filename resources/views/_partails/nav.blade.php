@@ -32,12 +32,15 @@
                     </a>
                 </p>
                 <p class="control">
-                    <a class="button" href="{{ url('logout') }}">
-                        <span class="icon">
-                            <i class="fa fa-sign-out"></i>
-                        </span>
-                        <span>logout</span>
-                    </a>
+                    <form action="{{ url('logout') }}" method="POST">
+                        <button class="button">
+                            <span class="icon">
+                                <i class="fa fa-sign-out"></i>
+                            </span>
+                            <span>logout</span>
+                        </button>
+                        {{ csrf_field() }}
+                    </form>
                 </p>
                 @endadmin
             </div>

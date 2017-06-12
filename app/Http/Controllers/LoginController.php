@@ -24,6 +24,13 @@ class LoginController extends Controller
         return view('auth/login');
     }
 
+    /**
+     * Post login
+     *
+     * @param  \Illuminate\Http\Request $request
+     *
+     * @return \Illuminate\Http\RedirectResponse
+     */
     public function postLogin(Request $request)
     {
         return $this->attemptLogin($request)
@@ -31,6 +38,13 @@ class LoginController extends Controller
             : $this->sendFailedLoginResponse($request);
     }
 
+    /**
+     * Attempt to log the user into the application.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     *
+     * @return bool
+     */
     protected function attemptLogin(Request $request)
     {
         return Auth::guard()->attempt(
@@ -38,12 +52,25 @@ class LoginController extends Controller
         );
     }
 
+    /**
+     * Send the response after the user was authenticated.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\Response
+     */
     protected function sendLoginResponse(Request $request)
     {
         $request->session()->regenerate();
+
         return redirect()->intended('/');
     }
 
+    /**
+     * Get the failed login response instance.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\RedirectResponse
+     */
     protected function sendFailedLoginResponse(Request $request)
     {
         $errors = ['email' => trans('auth.failed')];
@@ -57,11 +84,20 @@ class LoginController extends Controller
             ->withErrors($errors);
     }
 
+    /**
+     * Log the user out of the application.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     *
+     * @return \Illuminate\Http\Response
+     */
     public function getLogout(Request $request)
     {
         Auth::guard()->logout();
+
         $request->session()->flush();
         $request->session()->regenerate();
+
         return redirect('/');
     }
 }

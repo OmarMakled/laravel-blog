@@ -28,7 +28,7 @@ class ArticlesSeeder extends Seeder
         factory(Category::class)->create(['name' => 'unknown']);
         factory(Category::class, 10)->create();
 
-        foreach (range(1, 10) as $index) {
+        foreach (range(1, 100) as $index) {
             $article = factory(Article::class)->create();
 
             $article->comments()->createMany(

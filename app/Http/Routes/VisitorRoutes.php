@@ -31,7 +31,7 @@ class VisitorRoutes extends BaseRouter
                 'middleware'    =>  'guest',
                 'uses'          =>  'LoginController@postLogin'
             ]);
-            $router->get('logout', [
+            $router->post('logout', [
                 'middleware'    =>  'auth',
                 'uses'          =>  'LoginController@getLogout'
             ]);
