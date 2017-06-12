@@ -1,0 +1,23 @@
+@import url(https://fonts.googleapis.com/css?family=Raleway:300,400,600);
+
+@import "node_modules/font-awesome/scss/font-awesome.scss";
+@import "node_modules/bulma/bulma";
+
+.container {
+  padding-top:50px;
+  max-width: 968px;
+}
+
+ul.pagination-list {
+    list-style: none;
+}
+
+.card-content {
+    margin-bottom: 1rem;
+    background: rgba(204, 204, 204, 0.08);
+}
+
+.is-fullwidth {
+    display: flex;
+    width: 100%;
+}
