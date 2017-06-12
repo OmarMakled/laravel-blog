@@ -1,5 +1,11 @@
 <?php
 
+/*
+ * This file is part of Minimum Blog Project for AqarMap 2017.
+ *
+ * @author Omar Makled <omar.makled@gmail.com>
+ */
+
 namespace App\Listeners;
 
 use App\Events\Event;
@@ -9,15 +15,31 @@ use Illuminate\Contracts\Queue\ShouldQueue;
 
 class ArticleEventSubscriber
 {
+    /**
+     * Cacheable instance
+     *
+     * @var \App\Services\Cacheable
+     */
     protected $cacheable;
 
+    /**
+     * Create a new articles event subscriber instance.
+     *
+     * @param \App\Services\Cacheable $cacheable
+     *
+     * @return void
+     */
     public function __construct(Cacheable $cacheable)
     {
         $this->cacheable = $cacheable;
     }
 
     /**
-     * Handle user login events.
+     * Handle article saved.
+     *
+     * @param \App\Models\Article $event
+     *
+     * @return void
      */
     public function onArticleSaved($event)
     {
@@ -27,7 +49,11 @@ class ArticleEventSubscriber
     }
 
     /**
-     * Handle user logout events.
+     * Handle comment added.
+     *
+     * @param \App\Models\Article $event
+     *
+     * @return void
      */
     public function onCommentAdded($event)
     {
